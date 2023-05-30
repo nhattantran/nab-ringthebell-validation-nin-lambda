@@ -14,20 +14,26 @@ export const handler: Handler = async (event: ConnectContactFlowEvent, context: 
     const nin = event.Details.ContactData.Attributes.nin;
     if (!nin) {
         return {
-            message: 'Please input your nin',
+            message: 'Please enter your NAB identification number',
             requestField: 'nin',
         };
     }
     const password = event.Details.ContactData.Attributes.password;
     if (!password) {
         return {
-            message: 'Please input your password',
+            message: 'Please enter your NAB identification password',
             requestField: 'password',
         }
     }
     console.log('Nin:', nin);
     console.log('Password:', password);
     const findCustomer = customer.find((element) => element.nin === nin && element.password === password);
+    if (!findCustomer) {
+        return {
+            exitLoop: true,
+            message: ''
+        }
+    }
     if (affectedAreas.includes(findCustomer.postalCode)) {
         return {
             exitLoop: true,
