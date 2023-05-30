@@ -37,7 +37,7 @@ export const handler: Handler = async (event: ConnectContactFlowEvent, context: 
     if (affectedAreas.includes(findCustomer.postalCode)) {
         return {
             exitLoop: true,
-            message:`Thanks ${findCustomer.name}, Your request has been approved. We will contact you soon`,
+            message:`Thanks, ${findCustomer.name}. Your request has been approved, we will contact you soon`,
             name: findCustomer.name,
             postalCode: findCustomer.postalCode,
             nin: findCustomer.nin,
