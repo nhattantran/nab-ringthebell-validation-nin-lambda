@@ -37,7 +37,7 @@ export const handler: Handler = async (event: ConnectContactFlowEvent, context: 
     if (affectedAreas.includes(findCustomer.postalCode)) {
         return {
             exitLoop: true,
-            message:`Thanks, ${findCustomer.name}. Your request has been approved, we will contact you soon`,
+            message:`Thanks, ${findCustomer.name}. We understand that you're located in an area recently impacted by flooding. Your deferral request has been approved.`,
             name: findCustomer.name,
             postalCode: findCustomer.postalCode,
             nin: findCustomer.nin,
